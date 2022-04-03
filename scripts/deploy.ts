@@ -13,8 +13,6 @@ async function main() {
     [deployer] = await ethers.getSigners();
     console.log("Deploying contracts with the account:", deployer.address);
     const spaceCoinContract = (await ethers.getContractFactory("SpaceCoin")) as SpaceCoin__factory;
-    const spaceLPContract = (await ethers.getContractFactory("SpaceLP")) as SpaceLP__factory;
-    const spaceRouterContract = (await ethers.getContractFactory("SpaceRouter")) as SpaceRouter__factory;
     const icoContract = await ethers.getContractFactory("ICO");
     spaceCoin = await spaceCoinContract.deploy(deployer.address, deployer.address);
     ico = await icoContract.deploy(deployer.address, spaceCoin.address, [deployer.address]);
